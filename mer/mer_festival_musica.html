@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MER - Festival Internacional de Música y Danza</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .diagram-container {
+            width: 100%;
+            height: 800px;
+            border: 2px solid #34495e;
+            border-radius: 10px;
+            position: relative;
+            background: linear-gradient(45deg, #f8f9fa 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f8f9fa 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f8f9fa 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f8f9fa 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            overflow: hidden;
+        }
+        
+        .entity {
+            position: absolute;
+            border: 3px solid #2c3e50;
+            border-radius: 8px;
+            background: #ecf0f1;
+            padding: 15px;
+            min-width: 140px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .entity:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .entity-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        
+        .entity-attributes {
+            font-size: 11px;
+            color: #34495e;
+            line-height: 1.3;
+        }
+        
+        .primary-key {
+            text-decoration: underline;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .relationship {
+            position: absolute;
+            border: 2px solid #e74c3c;
+            background: #fff5f5;
+            border-radius: 50px;
+            padding: 8px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #c0392b;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .line {
+            position: absolute;
+            background: #34495e;
+            height: 2px;
+            transform-origin: left center;
+        }
+        
+        .cardinality {
+            position: absolute;
+            font-size: 12px;
+            font-weight: bold;
+            color: #e74c3c;
+            background: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .legend {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .legend h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+        
+        .entity-legend { background: #ecf0f1; border: 2px solid #2c3e50; }
+        .relationship-legend { background: #fff5f5; border: 2px solid #e74c3c; border-radius: 50px; }
+        
+        .details {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e8;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .details h3 {
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        
+        .details ul {
+            margin-left: 20px;
+        }
+        
+        .details li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 Modelo Entidad-Relación<br>Festival Internacional de Música y Danza</h1>
+        
+        <div class="diagram-container">
+            <!-- ENTIDADES -->
+            
+            <!-- Festival -->
+            <div class="entity" style="top: 50px; left: 600px;">
+                <div class="entity-title">FESTIVAL</div>
+                <div class="entity-attributes">
+                    <div class="primary-key">ID_festival</div>
+                    <div>nombre_oficial</div>
+                    <div>año_realizacion</div>
+                    <div>ciudad_sede</div>
+                    <div>presupuesto_total</div>
+                </div>
+            </div>
+            
+            <!-- Evento -->
+            <div class="entity" style="top: 300px; left: 600px;">
+                <div class="entity-title">EVENTO</div>
+                <div class="entity-attributes">
+                    <div class="primary-key">ID_evento</div>
+                    <div>nombre</div>
+                    <div>fecha_hora</div>
+                    <div>lugar_realizacion</div>
+                    <div>descripcion_breve</div>
+                    <div>costo_entrada</div>
+                    <div>tipo_evento</div>
+                </div>
+            </div>
+            
+            <!-- Artista -->
+            <div class="entity" style="top: 300px; left: 250px;">
+                <div class="entity-title">ARTISTA</div>
+                <div class="entity-attributes">
+                    <div class="primary-key">ID_artista</div>
+                    <div>nombre</div>
+                    <div>nacionalidad</div>
+                    <div>estilos_artisticos</div>
+                </div>
+            </div>
+            
+            <!-- Entrada -->
+            <div class="entity" style="top: 550px; left: 600px;">
+                <div class="entity-title">ENTRADA</div>
+                <div class="entity-attributes">
+                    <div class="primary-key">nro_entrada</div>
+                    <div class="primary-key">ID_evento (FK)</div>
+                    <div>tipo_entrada</div>
+                    <div>precio</div>
+                    <div>datos_asistente</div>
+                </div>
+            </div>
+            
+            <!-- Patrocinador -->
+            <div class="entity" style="top: 300px; left: 950px;">
+                <div class="entity-title">PATROCINADOR</div>
+                <div class="entity-attributes">
+                    <div class="primary-key">ID_patrocinador</div>
+                    <div>nombre</div>
+                    <div>tipo</div>
+                    <div>datos_contacto</div>
+                </div>
+            </div>
+            
+            <!-- RELACIONES -->
+            
+            <!-- Incluye -->
+            <div class="relationship" style="top: 180px; left: 630px;">
+                INCLUYE
+            </div>
+            
+            <!-- Participa -->
+            <div class="relationship" style="top: 330px; left: 430px;">
+                PARTICIPA
+            </div>
+            
+            <!-- Pertenece -->
+            <div class="relationship" style="top: 440px; left: 630px;">
+                PERTENECE
+            </div>
+            
+            <!-- Patrocina -->
+            <div class="relationship" style="top: 330px; left: 780px;">
+                PATROCINA
+            </div>
+            
+            <!-- LÍNEAS DE CONEXIÓN -->
+            
+            <!-- Festival - Incluye -->
+            <div class="line" style="top: 149px; left: 660px; width: 40px; transform: rotate(90deg);"></div>
+            
+            <!-- Incluye - Evento -->
+            <div class="line" style="top: 210px; left: 660px; width: 80px; transform: rotate(90deg);"></div>
+            
+            <!-- Artista - Participa -->
+            <div class="line" style="top: 349px; left: 370px; width: 80px;"></div>
+            
+            <!-- Participa - Evento -->
+            <div class="line" style="top: 349px; left: 510px; width: 80px;"></div>
+            
+            <!-- Evento - Pertenece -->
+            <div class="line" style="top: 410px; left: 660px; width: 40px; transform: rotate(90deg);"></div>
+            
+            <!-- Pertenece - Entrada -->
+            <div class="line" style="top: 480px; left: 660px; width: 60px; transform: rotate(90deg);"></div>
+            
+            <!-- Evento - Patrocina -->
+            <div class="line" style="top: 349px; left: 750px; width: 50px;"></div>
+            
+            <!-- Patrocina - Patrocinador -->
+            <div class="line" style="top: 349px; left: 850px; width: 90px;"></div>
+            
+            <!-- CARDINALIDADES -->
+            
+            <!-- Festival (1) - Incluye - (N) Evento -->
+            <div class="cardinality" style="top: 160px; left: 675px;">1</div>
+            <div class="cardinality" style="top: 270px; left: 675px;">N</div>
+            
+            <!-- Artista (N) - Participa - (M) Evento -->
+            <div class="cardinality" style="top: 325px; left: 370px;">N</div>
+            <div class="cardinality" style="top: 325px; left: 570px;">M</div>
+            
+            <!-- Evento (1) - Pertenece - (N) Entrada -->
+            <div class="cardinality" style="top: 420px; left: 675px;">1</div>
+            <div class="cardinality" style="top: 530px; left: 675px;">N</div>
+            
+            <!-- Evento (N) - Patrocina - (M) Patrocinador -->
+            <div class="cardinality" style="top: 325px; left: 750px;">N</div>
+            <div class="cardinality" style="top: 325px; left: 920px;">M</div>
+            
+        </div>
+        
+        <div class="legend">
+            <h3>📋 Leyenda del Diagrama</h3>
+            <div class="legend-item">
+                <div class="legend-box entity-legend"></div>
+                <span><strong>Entidades:</strong> Representan los objetos principales del sistema</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box relationship-legend"></div>
+                <span><strong>Relaciones:</strong> Representan las conexiones entre entidades</span>
+            </div>
+            <div class="legend-item">
+                <div style="width: 20px; height: 2px; background: #e74c3c; margin-right: 10px;"></div>
+                <span><strong>Cardinalidades:</strong> 1 (uno), N (muchos), M (muchos)</span>
+            </div>
+            <div class="legend-item">
+                <div style="width: 20px; height: 2px; background: #e74c3c; margin-right: 10px; text-decoration: underline;"></div>
+                <span><strong>Clave Primaria:</strong> Subrayada en rojo</span>
+            </div>
+        </div>
+        
+        <div class="details">
+            <h3>📊 Análisis Detallado de Cardinalidades y Participaciones</h3>
+            
+            <h4>🔗 Relaciones y sus Cardinalidades:</h4>
+            <ul>
+                <li><strong>FESTIVAL (1:N) EVENTO:</strong>
+                    <ul>
+                        <li>Cardinalidad: Un festival incluye muchos eventos, cada evento pertenece a un único festival</li>
+                        <li>Participación: FESTIVAL (parcial) - EVENTO (total)</li>
+                    </ul>
+                </li>
+                
+                <li><strong>ARTISTA (N:M) EVENTO:</strong>
+                    <ul>
+                        <li>Cardinalidad: Un artista puede participar en muchos eventos, un evento puede tener muchos artistas</li>
+                        <li>Participación: ARTISTA (parcial) - EVENTO (parcial)</li>
+                    </ul>
+                </li>
+                
+                <li><strong>EVENTO (1:N) ENTRADA:</strong>
+                    <ul>
+                        <li>Cardinalidad: Un evento puede tener muchas entradas, cada entrada pertenece a un único evento</li>
+                        <li>Participación: EVENTO (parcial) - ENTRADA (total)</li>
+                    </ul>
+                </li>
+                
+                <li><strong>PATROCINADOR (N:M) EVENTO:</strong>
+                    <ul>
+                        <li>Cardinalidad: Un patrocinador puede patrocinar muchos eventos, un evento puede tener muchos patrocinadores</li>
+                        <li>Participación: PATROCINADOR (parcial) - EVENTO (parcial)</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h4>🔑 Claves Primarias:</h4>
+            <ul>
+                <li><strong>FESTIVAL:</strong> ID_festival</li>
+                <li><strong>EVENTO:</strong> ID_evento</li>
+                <li><strong>ARTISTA:</strong> ID_artista</li>
+                <li><strong>ENTRADA:</strong> (nro_entrada, ID_evento) - Clave primaria compuesta</li>
+                <li><strong>PATROCINADOR:</strong> ID_patrocinador</li>
+            </ul>
+            
+            <h4>🎯 Restricciones y Consideraciones Especiales:</h4>
+            <ul>
+                <li>La entidad ENTRADA tiene una clave primaria compuesta (nro_entrada + ID_evento) para identificar unívocamente cada entrada</li>
+                <li>El atributo "estilos_artisticos" en ARTISTA es multivaluado (puede tener múltiples valores)</li>
+                <li>El atributo "tipo_evento" en EVENTO tiene valores restringidos: concierto, espectáculo de danzas, taller</li>
+                <li>Las relaciones N:M (ARTISTA-EVENTO y PATROCINADOR-EVENTO) requerirán tablas de intersección en el modelo relacional</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

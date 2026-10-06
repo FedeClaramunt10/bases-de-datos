@@ -1,6 +1,6 @@
-# Bases de Datos
+﻿# Bases de Datos
 
-Trabajos prácticos de la materia Bases de Datos de la Tecnicatura en Análisis de Datos e Inteligencia Artificial: diseño de esquemas relacionales, modelado MER/MER y SQL (DDL, DML, consultas y joins).
+Trabajos prácticos de la materia Bases de Datos de la Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial: diseño de esquemas relacionales, modelado MER/MER y SQL (DDL, DML, consultas y joins).
 
 ## Contenido
 
